@@ -1,106 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>elizabeth c. | portfolio</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../src/style.css" />
-    <link rel="icon" href="/assets/favicon.png" />
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elizabeth Cay</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="/assets/favicon.png" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <body>
-    <div class="container">
-      <div class="left-section">
-        <h1 class="name">elizabeth c. 榮麗</h1>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: white;
+      color: #000;
+      line-height: 1.6;
+    }
 
-        <p class="description">
-          An <strong>engineering physics & computer science</strong> student at
-          McMaster University with an interest in design-driven and
-          human-centric tech.
-        </p>
+    .container {
+      max-width: 896px;
+      margin: 0 auto;
+      padding: 48px 32px;
+    }
 
-        <p class="personal-note">
-          In my spare time, I enjoy working on dev projects, creative writing,
-          and testing the perfect milk-to-usucha ratios for iced matcha lattes.
-        </p>
+    header {
+      margin-bottom: 64px;
+    }
 
-        <div class="links">
-          <a href="https://github.com/elizabethcay" target="_blank">Github</a>
-          <a href="https://www.linkedin.com/in/elizabeth-cay/" target="_blank"
-            >LinkedIn</a
-          >
-          <a href="mailto:eelizabethcay@gmail.com" target="_blank">Email</a>
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #d1d5db;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+      font-size: 14px;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      color: #000;
+      padding: 0;
+    }
+
+    nav button:hover {
+      color: #4b5563;
+    }
+
+    nav button.active {
+      text-decoration: underline;
+    }
+
+    .emoji-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .space-y-12 > * + * {
+      margin-top: 48px;
+    }
+
+    .space-y-8 > * + * {
+      margin-top: 32px;
+    }
+
+    .space-y-6 > * + * {
+      margin-top: 24px;
+    }
+
+    .space-y-4 > * + * {
+      margin-top: 16px;
+    }
+
+    .space-y-3 > * + * {
+      margin-top: 12px;
+    }
+
+    .space-y-2 > * + * {
+      margin-top: 8px;
+    }
+
+    .tag-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      background: #ef4444;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 24px;
+    }
+
+    .font-semibold {
+      font-weight: 600;
+    }
+
+    .text-gray-600 {
+      color: #4b5563;
+    }
+
+    .text-gray-500 {
+      color: #6b7280;
+    }
+
+    .footer {
+      padding-top: 32px;
+      margin-top: 48px;
+      border-top: 1px solid #d1d5db;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #000;
+      text-decoration: none;
+      font-size: 20px;
+      display: inline-block;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #4b5563;
+    }
+
+    .footer p {
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .max-w-2xl {
+      max-width: 672px;
+    }
+
+    .projects-page h2:first-child {
+      font-size: 24px;
+    }
+
+    .projects-page h3 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 100%;
+    }
+
+    .gallery-item {
+      width: 100%;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #e5e7eb;
+    }
+
+    .image-placeholder {
+      aspect-ratio: 16/9;
+      background: #e5e7eb;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9ca3af;
+      font-size: 14px;
+      text-align: center;
+      padding: 16px;
+    }
+
+    .caption {
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .container {
+        padding: 32px 24px;
+      }
+
+      header {
+        margin-bottom: 48px;
+      }
+
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      h1 {
+        font-size: 24px;
+        width: 100%;
+      }
+
+      nav {
+        gap: 20px;
+        order: 2;
+        width: 100%;
+      }
+
+      .emoji-btn {
+        order: 1;
+        align-self: flex-end;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      .projects-page h2:first-child {
+        font-size: 20px;
+      }
+
+      .projects-page h3 {
+        font-size: 18px;
+      }
+
+      .space-y-12 > * + * {
+        margin-top: 36px;
+      }
+
+      .space-y-8 > * + * {
+        margin-top: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 24px 16px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      nav {
+        gap: 16px;
+        font-size: 13px;
+      }
+
+      nav button {
+        font-size: 13px;
+      }
+
+      .tag-line {
+        font-size: 13px;
+      }
+
+      h2 {
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+
+      .footer-links {
+        gap: 16px;
+      }
+
+      .footer-links a {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <h1>Elizabeth Cay (蔡榮麗)</h1>
+        <nav>
+          <button onclick="changePage('home')" id="nav-home" class="active">home</button>
+          <button onclick="changePage('about')" id="nav-about">about</button>
+          <button onclick="changePage('projects')" id="nav-projects">projects</button>
+          <button onclick="changePage('other')" id="nav-other">other</button>
+        </nav>
+        <button class="emoji-btn">ᕙ( •̀ ᗜ •́ )ᕗ</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Home Page -->
+      <div id="home-page" class="page active">
+        <div class="space-y-12">
+          <div class="tag-line">
+            <span>𝜗𝜚</span>
+            <span>Engineering Physics & CS @</span>
+            <span class="font-semibold">McMaster University ★</span>
+          </div>
+
+          <section>
+            <h2>RECENTLY (DEC. '25)</h2>
+            <div class="space-y-3">
+              <p>Placed 1st overall in the Re-Engineering catergory for the McMaster Engineering Competition 2025, selected to move on to the Ontario Engineering Competition.</p>
+              <p>Built mauutyper, a typing accuracy test that uses fanfiction-style excerpts.</p>
+            </div>
+          </section>
+
+          <section>
+            <h2>EXPERIENCE</h2>
+            <div class="space-y-6">
+              <div>
+                <p class="font-semibold">Software Engineer Intern @ Develop for Good</p>
+                <p class="text-gray-600" style="font-size: 14px;">October 2025 - Present</p>
+              </div>
+              <div>
+                <p class="font-semibold">Computational Research Assistant @ UofT & OISE | Dr. Kang's Development Lab</p>
+                <p class="text-gray-600" style="font-size: 14px;">June 2024 - August 2024</p>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>EXTRACURRICULARS</h2>
+            <div class="space-y-6">
+              <div>
+                <p class="font-semibold">Software Developer @ McMaster Design League</p>
+                <p class="text-gray-600" style="font-size: 14px;">June 2025 - Present</p>
+              </div>
+              <div>
+                <p class="font-semibold">Design Executive @ DeltaHacks</p>
+                <p class="text-gray-600" style="font-size: 14px;">June 2025 - Present</p>
+              </div>
+            </div>
+          </section>
+
+          <div class="footer">
+            <div class="footer-links">
+              <a href="https://www.linkedin.com/in/elizabeth-cay-8217ba261/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="https://github.com/elizabethcay" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="mailto:caye@mcmaster.ca" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>2025 © Elizabeth Cay</p>
+          </div>
         </div>
       </div>
 
-      <div class="right-section">
-        <h2 class="section-title">previously, i</h2>
+      <!-- About Page -->
+      <div id="about-page" class="page">
+        <div class="space-y-12">
+          <p>Hey, I'm Elizabeth! I'm a Toronto native that's now based in Hamilton, Ontario.</p>
+                    
+          <p><span class="font-semibold">2015:</span> Awarded a scholarship to Girls Learning Code at age 8 through a written application on wearable technology. Start of my interest in computation!</p>
+          
+          <p><span class="font-semibold">2020-2022:</span> Following the uprsise of Anti-Asian hate during the pandemic, I dedicated myself to writing about Asian-American advocacy and diaspora. I was published in the Wall Street Journal, and wrote with a NYC-based student-org.</p>
+          
+          <p><span class="font-semibold">2021-2024:</span> I learned web dev tools and built TheEngdex, a platform providing high school students with free information on engineering disciplines. I briefly ran CodeHase for fun, and reached 300k+ views and 35k+ likes on CS edu-content.</p>
+          
+          <p><span class="font-semibold">2025-present:</span> I'm studying Engineering Physics & Computer Science at McMaster University, and testing the best milk to koicha ratios for iced matcha lattes. Recently placed 1st in the Re-Engineering catergory for the MEC!</p>
 
-        <div class="experience-item" :last-child>
-          <p class="experience-text">
-            > was a <strong>computational research assistant</strong> @ dr. kang
-            lee's development lab with the university of toronto st. george &
-            oise
-          </p>
-        </div>
-
-        <h2 class="section-title">i'm currently,</h2>
-
-        <div class="project-item">
-          <p class="experience-text current">
-            > a <strong>software engineer</strong> @ develop for good
-          </p>
-        </div>
-
-        <div class="project-item">
-          <p class="experience-text current">
-            > a <strong>software developer</strong> @ mcmaster design league
-          </p>
-        </div>
-
-        <div class="project-item">
-          <p class="experience-text current">
-            > a <strong>ui/ux designer</strong> @ deltahacks
-          </p>
-        </div>
-
-        <div class="projects-section">
-          <h2 class="section-title">& featured projects</h2>
-
-          <div class="project-item">
-            <i class="project-text">completed</i>
-            <p class="project-text">
-              >
-              <span class="project-name"
-                ><a
-                  href="https://github.com/elizabethcay/photobooth"
-                  target="_blank"
-                  >seijai</a
-                ></span
-              >, a 4-cut style photo booth web app
-            </p>
-          </div>
-          <br />
-          <div class="project-item">
-            <i class="project-text">on-going</i>
-            <p class="project-text">
-              > <span class="project-name">loopline</span>, a social platform to
-              rate and share albums, EPs, and songs
-            </p>
-          </div>
-
-          <div class="project-item">
-            <p class="project-text">
-              > <span class="project-name">maautype</span>, typing speed and
-              accuracy tester
-            </p>
+          <div class="footer">
+            <div class="footer-links">
+              <a href="https://www.linkedin.com/in/elizabeth-cay-8217ba261/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="https://github.com/elizabethcay" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="mailto:caye@mcmaster.ca" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>2025 © Elizabeth Cay</p>
           </div>
         </div>
       </div>
-    </div>
-  </body>
+
+      <!-- Projects Page -->
+      <div id="projects-page" class="page projects-page">
+        <div class="space-y-12">
+          <h2>PROJECTS</h2>
+          
+          <div class="space-y-8">
+            <div>
+              <h3>A work in progress. Come back soon. ( ˆ𐃷ˆ) .ᐟ.ᐟ</h3>
+              <p class="text-gray-600" style="font-size: 14px; margin-bottom: 8px;"></p>
+              <p></p>
+            </div>
+
+            <div>
+              <h3></h3>
+              <p class="text-gray-600" style="font-size: 14px; margin-bottom: 8px;"></p>
+              <p></p>
+            </div>
+
+            <div>
+              <h3></h3>
+              <p class="text-gray-600" style="font-size: 14px; margin-bottom: 8px;"></p>
+              <p></p>
+            </div>
+          </div>
+
+          <div style="padding-top: 32px;">
+            <h2>WRITTEN WORK</h2>
+            <div class="space-y-8">
+              <div>
+                <h3 style="font-size: 18px;">A work in progress. Come back soon. ( ˆ𐃷ˆ) .ᐟ.</h3>
+                <p class="text-gray-600" style="font-size: 14px; margin-bottom: 8px;"></p>
+              </div>
+
+              <div>
+                <h3 style="font-size: 18px;"></h3>
+                <p class="text-gray-600" style="font-size: 14px; margin-bottom: 8px;"></p>
+              </div>
+
+              <div>
+                <h3 style="font-size: 18px;"></h3>
+                <p class="text-gray-600" style="font-size: 14px; margin-bottom: 8px;"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer">
+            <div class="footer-links">
+              <a href="https://www.linkedin.com/in/elizabeth-cay-8217ba261/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="https://github.com/elizabethcay" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="mailto:caye@mcmaster.ca" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>2025 © Elizabeth Cay</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Page -->
+      <div id="other-page" class="page">
+        <div class="space-y-12">
+          <h2 style="font-size: 24px; margin-bottom: 32px;">GALLERY</h2>
+          
+          <div class="grid">
+            <div class="gallery-item">
+              <img src="assets/ceramics.JPG" alt="Ceramics">
+              <p class="caption">Ceramics</p>
+            </div>
+            
+            <div class="gallery-item">
+              <img src="assets/lake.jpg" alt="Summer Up North">
+              <p class="caption">Summer Up North</p>
+            </div>
+            
+            <div class="gallery-item">
+              <img src="assets/lotus.jpg" alt="Lotus (Fujifilm FINEPIX J110W)">
+              <p class="caption">Lotus (Fujifilm FINEPIX J110W)</p>
+            </div>
+            
+            <div class="gallery-item">
+              <img src="assets/cafe.png" alt="My Favourite Toronto Cafe">
+              <p class="caption">My Favourite Toronto Cafe</p>
+            </div>
+          </div>
+
+          <div class="footer">
+            <div class="footer-links">
+              <a href="https://www.linkedin.com/in/elizabeth-cay-8217ba261/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="https://github.com/elizabethcay" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="mailto:caye@mcmaster.ca" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>2025 © Elizabeth Cay</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function changePage(pageName) {
+      // Hide all pages
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active'));
+      
+      // Remove active class from all nav buttons
+      const navButtons = document.querySelectorAll('nav button');
+      navButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Show selected page
+      document.getElementById(pageName + '-page').classList.add('active');
+      
+      // Add active class to clicked nav button
+      document.getElementById('nav-' + pageName).classList.add('active');
+    }
+  </script>
+</body>
 </html>
